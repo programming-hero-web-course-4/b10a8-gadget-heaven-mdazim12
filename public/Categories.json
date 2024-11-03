@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "name": "Computers",
+      "slug": "computers"
+    },
+    {
+      "id": 2,
+      "name": "Phones",
+      "slug": "phones"
+    },
+    {
+      "id": 3,
+      "name": "Smart Watches",
+      "slug": "smart-watches"
+    },
+    {
+      "id": 4,
+      "name": "Chargers",
+      "slug": "chargers"
+    },
+    {
+      "id": 5,
+      "name": "Power Banks",
+      "slug": "power-banks"
+    }
+  ]
+  
