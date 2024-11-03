@@ -9,7 +9,7 @@ import { BsCart } from "react-icons/bs";
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-[#9538E2] ">
+        <div className="navbar bg-[#9538E2] rounded-t-xl ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
