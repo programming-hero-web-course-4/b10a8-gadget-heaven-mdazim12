@@ -6,6 +6,10 @@ import Root from './components/Root/Root';
 import Error from './components/Error/Error';
 import Home from './components/Home/Home';
 import ProductCard from './components/ProductCard/ProductCard';
+import Details from './components/Details/Details';
+
+
+
 
 
 
@@ -27,6 +31,11 @@ const router = createBrowserRouter([
             loader : () => fetch('../All-Products.json'),
           },
         ]
+      },
+      {
+        path : '/product/:product_id',
+        element : <Details></Details>,
+        loader : () => fetch('../All-Products.json'),
       },
     ]
 

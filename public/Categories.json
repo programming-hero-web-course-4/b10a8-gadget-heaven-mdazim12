@@ -1,27 +1,33 @@
 [
-    {
-      "id": 1,
-      "name": "Computers",
+  {
+    "id": 1,
+    "name": "All",
+    "slug": "computers"
+  },  
+  
+  {
+      "id": 2,
+      "name": "computers",
       "slug": "computers"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Phones",
       "slug": "phones"
     },
     {
       "id": 3,
-      "name": "Smart Watches",
+      "name": "smart-Watches",
       "slug": "smart-watches"
     },
     {
-      "id": 4,
-      "name": "Chargers",
+      "id": 5,
+      "name": "chargers",
       "slug": "chargers"
     },
     {
-      "id": 5,
-      "name": "Power Banks",
+      "id": 6,
+      "name": "power-Banks",
       "slug": "power-banks"
     }
   ]
