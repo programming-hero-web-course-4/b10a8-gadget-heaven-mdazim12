@@ -3,7 +3,7 @@ import CardProduct from "../CardProduct/CardProduct";
 import { useEffect, useState } from "react";
 
 const ProductCard = () => {
-    const allProduct = useLoaderData(); 
+    const allProduct = useLoaderData([]); 
     const { category } = useParams(); 
     const [product, setProduct] = useState(allProduct || []); 
 
@@ -17,6 +17,10 @@ const ProductCard = () => {
                 );
             setProduct(filteredProducts); 
         }
+        else{
+            setProduct(allProduct)
+        }
+        
     }, [category, allProduct]);
 
     return (

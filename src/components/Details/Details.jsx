@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Rating from 'react-rating-stars-component';
 import { CiHeart } from "react-icons/ci";
 import { BsCart } from "react-icons/bs";
+import { addToStoredReadList, addToStoredWishList} from "../../Utility/AddToDB";
 
 
 
@@ -11,6 +12,16 @@ const Details = () => {
     const data = useLoaderData();
 
     const { product_id } = useParams();
+
+    const handleCart = (id) => {
+       
+        addToStoredReadList(id);
+    };
+
+    const handleWish = (id) => {
+        console.log('button clicked', id);
+        addToStoredWishList(id);
+    }
 
 
     const products = data.find(product => product.product_id === product_id)
@@ -59,7 +70,7 @@ const Details = () => {
                     />
 
                     <div className="flex gap-4">
-                        <button
+                        <button onClick={() => handleCart(product_id)}
                             className={`flex gap-3 items-center ${availability ? "bg-[#9538E2]" : "bg-gray-400 cursor-not-allowed"
                                 } rounded-3xl text-xl text-white py-2 px-6 font-medium`}
                             disabled={!availability}
@@ -68,7 +79,7 @@ const Details = () => {
                         </button>
 
 
-                        <button className=" inline-block p-3 rounded-full text-xl text-gray-600 border-gray-400 border-2  font-medium" > <CiHeart /> </button>
+                        <button onClick={() => handleWish(product_id)}  className=" inline-block p-3 rounded-full text-xl text-gray-600 border-gray-400 border-2  font-medium" > <CiHeart /> </button>
                     </div>
 
 
