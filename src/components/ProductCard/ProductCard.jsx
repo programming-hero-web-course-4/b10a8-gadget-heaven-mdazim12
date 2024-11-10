@@ -3,19 +3,19 @@ import CardProduct from "../CardProduct/CardProduct";
 import { useEffect, useState } from "react";
 
 const ProductCard = () => {
-    const allProduct = useLoaderData(); // Load all products from the loader
-    const { category } = useParams(); // Get the category from URL parameters
-    const [product, setProduct] = useState(allProduct || []); // Initialize state with all products
+    const allProduct = useLoaderData(); 
+    const { category } = useParams(); 
+    const [product, setProduct] = useState(allProduct || []); 
 
     useEffect(() => {
         if (allProduct) {
-            // If no category is specified, show all products
+            
             const filteredProducts = (!category || category === "All") 
                 ? allProduct 
                 : allProduct.filter(product => 
                     product.category?.trim().toLowerCase() === category.trim().toLowerCase()
                 );
-            setProduct(filteredProducts); // Set the filtered products to state
+            setProduct(filteredProducts); 
         }
     }, [category, allProduct]);
 

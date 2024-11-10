@@ -1,5 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Rating from 'react-rating-stars-component';
+import { CiHeart } from "react-icons/ci";
+import { BsCart } from "react-icons/bs";
 
 
 
@@ -45,16 +47,29 @@ const Details = () => {
                         ))
                     }
 
-
+                    <p className="text-xl font-bold my-2">Rating:</p>
 
                     <Rating
-                        count={rating}                // Total stars
-                        value={rating}           // Initial rating value
-                        size={24}                // Star size
-                        activeColor="#ffd700"    // Color of filled stars
-                        isHalf={true}            // Enables half-star rating
-                        edit={false}             // Makes it read-only
+                        count={rating}
+                        value={rating}
+                        size={24}
+                        activeColor="#ffd700"
+                        isHalf={true}
+                        edit={false}
                     />
+
+                    <div className="flex gap-4">
+                        <button
+                            className={`flex gap-3 items-center ${availability ? "bg-[#9538E2]" : "bg-gray-400 cursor-not-allowed"
+                                } rounded-3xl text-xl text-white py-2 px-6 font-medium`}
+                            disabled={!availability}
+                        >
+                            Add to cart <BsCart />
+                        </button>
+
+
+                        <button className=" inline-block p-3 rounded-full text-xl text-gray-600 border-gray-400 border-2  font-medium" > <CiHeart /> </button>
+                    </div>
 
 
                 </div>
