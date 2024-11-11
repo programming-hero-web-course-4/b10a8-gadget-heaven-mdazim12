@@ -9,6 +9,7 @@ import ProductCard from './components/ProductCard/ProductCard';
 import Details from './components/Details/Details';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Deshboard from './components/Deshboard/Deshboard';
 
 const router = createBrowserRouter([
   {
@@ -38,8 +39,14 @@ const router = createBrowserRouter([
         element: <Details />,
         loader: () => fetch('../All-Products.json'),
       },
+      {
+        path : '/deshboard',
+        element : <Deshboard></Deshboard>
+    
+      }
     ]
   },
+  
 ]);
 
 createRoot(document.getElementById('root')).render(

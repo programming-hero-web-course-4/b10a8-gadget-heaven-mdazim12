@@ -32,6 +32,7 @@ const Navbar = () => {
                         
 
                         <NavLink to = '/'>Home</NavLink>
+                        <NavLink to = '/deshboard'>Deshboard</NavLink>
                         
                     </ul>
                 </div>
@@ -43,7 +44,7 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                         
                        <li> <NavLink to = '/'>Home</NavLink></li>
-                       
+                       <li><NavLink to = '/deshboard'>Deshboard</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">

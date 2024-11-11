@@ -8,20 +8,22 @@ const ProductCard = () => {
     const [product, setProduct] = useState(allProduct || []); 
 
     useEffect(() => {
-        if (allProduct) {
-            
+        if (category) {
             const filteredProducts = (!category || category === "All") 
                 ? allProduct 
                 : allProduct.filter(product => 
                     product.category?.trim().toLowerCase() === category.trim().toLowerCase()
                 );
             setProduct(filteredProducts); 
-        }
-        else{
-            setProduct(allProduct)
+        } else {
+            setProduct(allProduct?.slice(0, 6) || []);
+            console.log('It is only else items')
         }
         
     }, [category, allProduct]);
+
+
+    
 
     return (
         <div className="container mx-auto my-8">

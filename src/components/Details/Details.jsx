@@ -2,7 +2,8 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Rating from 'react-rating-stars-component';
 import { CiHeart } from "react-icons/ci";
 import { BsCart } from "react-icons/bs";
-import { addToStoredReadList, addToStoredWishList} from "../../Utility/AddToDB";
+import { addToStoredReadList, addToStoredWishList } from "../../Utility/AddToDB";
+import { useState } from "react";
 
 
 
@@ -14,13 +15,16 @@ const Details = () => {
     const { product_id } = useParams();
 
     const handleCart = (id) => {
-       
+
         addToStoredReadList(id);
     };
+
+    const [WishButton, SetWishButton] = useState(false)
 
     const handleWish = (id) => {
         console.log('button clicked', id);
         addToStoredWishList(id);
+        SetWishButton(true);
     }
 
 
@@ -79,7 +83,13 @@ const Details = () => {
                         </button>
 
 
-                        <button onClick={() => handleWish(product_id)}  className=" inline-block p-3 rounded-full text-xl text-gray-600 border-gray-400 border-2  font-medium" > <CiHeart /> </button>
+                        <button
+                            onClick={() => handleWish(product_id)}
+                            className={`inline-block p-3 rounded-full text-xl text-gray-600 border-gray-400 border-2 font-medium ${WishButton ? 'bg-gray-300 cursor-not-allowed' : ''}`}
+                            disabled={WishButton}
+                        >
+                            <CiHeart />
+                        </button>
                     </div>
 
 
