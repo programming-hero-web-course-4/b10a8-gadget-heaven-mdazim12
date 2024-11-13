@@ -1,68 +1,85 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from './components/Root/Root';
-import Error from './components/Error/Error';
-import Home from './components/Home/Home';
-import ProductCard from './components/ProductCard/ProductCard';
-import Details from './components/Details/Details';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Deshboard from './components/Deshboard/Deshboard';
+
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import AllProducts from "./components/AllProducts";
+import AllProducts2 from "./components/AllProducts2";
+import ProductDetails from "./pages/ProductDetails";
+import Dashboard from "./pages/Dashboard";
+import { Toaster } from "react-hot-toast";
+import Statistics from "./pages/Statistics";
+import Cart from "./components/Cart";
+import Wishlist from "./components/Wishlist";
+import { HelmetProvider } from "react-helmet-async";
+import Contact from "./components/Contact";
+import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-    errorElement: <Error />,
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
-        loader: () => fetch('../Categories.json'),
+        loader: () => fetch("/category.json"),  
         children: [
           {
-            path: '/',
-            element: <ProductCard />,
-            loader: () => fetch('../All-Products.json'),
+            path: "",
+            element: <AllProducts2 />,
+            loader: () => fetch("/product.json"),  
           },
           {
-            path: '/category/:category',
-            element: <ProductCard />,
-            loader: () => fetch('../All-Products.json'),
+            path: "category/:categoryName", 
+            element: <AllProducts />,
+            loader: () => fetch("/product.json"),  
           },
-        ]
+        ],
       },
       {
-        path: '/product/:product_id',
-        element: <Details />,
-        loader: () => fetch('../All-Products.json'),
+        path: "/product/:product_id",
+        element: <ProductDetails />,
+        loader: () => fetch("/product.json"),  
       },
       {
-        path : '/deshboard',
-        element : <Deshboard></Deshboard>
-    
-      }
-    ]
+        path: "/dashboard",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "",
+            element: <Cart />,
+          },
+          {
+            path: "cart",
+            element: <Cart />,
+          },
+          {
+            path: "wishlist",
+            element: <Wishlist />,
+          },
+        ],
+      },
+      {
+        path: "/statistics",
+        element: <Statistics />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
   },
-  
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-    />
+    <HelmetProvider>
+      <Toaster />
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </StrictMode>
 );
